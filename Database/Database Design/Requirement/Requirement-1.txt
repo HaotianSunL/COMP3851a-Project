@@ -1,0 +1,13 @@
+Process：
+Staff login =>
+	=> Staff search information in keywords.
+=> Staff select the forum which is waiting for updating. 
+=> enter editing page.
+	(=> search history content in content type. (picture, video, text)
+	=> search history content in content time. (update, remove, stored) 
+	=> search history content in keywords.)
+		=> import selected content into editing box from selected content in history information.
+
+
+Entity:
+Staff, Forum, Content
