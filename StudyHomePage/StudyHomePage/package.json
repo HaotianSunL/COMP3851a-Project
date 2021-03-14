@@ -1,0 +1,20 @@
+{
+  "name": "studyhomepage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/composition-api": "^1.0.0-rc.5",
+    "echarts": "^5.0.2",
+    "muse-ui": "^3.0.2",
+    "normalize": "^0.3.1",
+    "normalize.css": "^8.0.1",
+    "vue": "^2.6.12",
+    "vue-echarts": "^6.0.0-rc.3"
+  }
+}

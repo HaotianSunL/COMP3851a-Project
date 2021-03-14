@@ -1,0 +1,481 @@
+<!--
+ * @Autor: Zhang Yingying
+ * @Date: 2021-03-12 21:58:33
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2021-03-13 17:39:30
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomePage</title>
+    <link rel="stylesheet" href="./css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="./css/muse-ui.css" type="text/css" />
+    <link rel="stylesheet" href="./css//style.css" type="text/css" />
+    <script src="./js/vue.js"></script>
+    <script src="./js/vue-composition-api.js"></script>
+    <script src="./js/muse-ui.js"></script>
+    <script src="./js/echarts.js"></script>
+    <script src="./js/vue-echarts.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="logo">
+          <img src="./images/uon-logo-square.svg" alt="logo" />
+        </div>
+        <div class="banner">student orientation</div>
+      </header>
+      <mu-carousel class="carousel" :hide-indicators="true">
+        <mu-carousel-item>
+          <!-- <img :src="carouselImg1" /> -->
+        </mu-carousel-item>
+        <mu-carousel-item>
+          <!-- <img :src="carouselImg2" /> -->
+        </mu-carousel-item>
+      </mu-carousel>
+      <section class="notice">
+        <div class="nav-container">
+          <div class="nav-desc">
+            <div class="brand">
+              <h1 class="brand-title">Stay Here:</h1>
+              <p class="brand-desc">We are all the 1st year students, in here, you can enjoy your university life.</p>
+            </div>
+          </div>
+          <div class="nav-bars">
+            <div class="nav-guide">
+              <div class="guide-header">Service U May Need Now:</div>
+              <div class="guide-item">
+                <img class="icon" src="./images/search.png" alt="search" />
+                Research
+              </div>
+              <div class="guide-item"><img class="icon" src="./images/question.png" alt="FAQs" />FAQs</div>
+              <div class="guide-item"><img class="icon" src="./images/support.png" alt="Support" />Support</div>
+              <div class="guide-item"><img class="icon" src="./images/user.png" alt="AskUON" />AskUON</div>
+              <div class="guide-item"><img class="icon" src="./images/fix.png" alt="fix" />Manage</div>
+              <div class="guide-item"><img class="icon" src="./images/language.png" alt="Language" />Language Help</div>
+              <div class="guide-item"><img class="icon" src="./images/map.png" alt="Map" />Map</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="home-tab">
+        <mu-tabs :value.sync="tab" indicator-color="#fedc33">
+          <mu-tab>Domestic</mu-tab>
+          <mu-tab>Internation</mu-tab>
+        </mu-tabs>
+        <div class="home-container" v-if="tab == 0">
+          <div class="home-nav">
+            <div class="home-nav-header">Home</div>
+            <div class="home-nav-item" :class="{ 'nav-item-active': domesticActive ==='todo' }" @click="handleStep('todo')">1 Before Uni To-Do List</div>
+            <div class="home-nav-item" :class="{ 'nav-item-active': domesticActive ==='needknow' }" @click="handleStep('needknow')">2 By Week1 U need know</div>
+            <div class="home-nav-item" :class="{ 'nav-item-active': domesticActive ==='introduction' }" @click="handleStep('introduction')">3 Semester Introduction</div>
+            <div class="home-nav-item" :class="{ 'nav-item-active': domesticActive ==='facility' }" @click="handleStep('facility')">4 School and facility</div>
+            <div class="home-nav-item" :class="{ 'nav-item-active': domesticActive ==='service' }" @click="handleStep('service')">5 Service from Uni</div>
+            <div class="home-nav-item">FAQs</div>
+          </div>
+          <div class="home-main">
+            <div class="todo-list-pane" v-if="domesticActive === 'todo'">
+              <h1 class="todo-title">To Do List:</h1>
+              <div class="intro-group">
+                <div class="intro-item"><mu-checkbox v-model="checkbox[0]" class="intro-item-checkbox"></mu-checkbox>1. Introduction of UON</div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[1]" class="intro-item-checkbox"></mu-checkbox> 2. Find <a href="#">degreee</a> information</div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[2]" class="intro-item-checkbox"></mu-checkbox>3. Watch <a href="#">"How to enroll in a course"</a> <img class="intro-icon" src="./images/vedio.png" alt="vedio" /></div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[3]" class="intro-item-checkbox"></mu-checkbox>4. Watch <a href="#">"How to select a course and manage timeable"</a><img class="intro-icon" src="./images/vedio.png" alt="vedio" /></div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[4]" class="intro-item-checkbox"></mu-checkbox>5. Watch <a href="#">"How to use blackboard"</a><img class="intro-icon" src="./images/vedio.png" alt="vedio" /></div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[5]" class="intro-item-checkbox"></mu-checkbox>6. <a href="#">Scholarships</a> Introduction</div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[6]" class="intro-item-checkbox"></mu-checkbox>7. <a href="#">Accommodation</a> Introduction</div>
+              </div>
+              <mu-button class="btn-intro" color="primary">Next</mu-button>
+            </div>
+            <div class="needknow-pane" v-if="domesticActive === 'needknow'">
+              <div class="needknow-section">
+                <h1 class="needknow-section-title">· Enroll Courses</h1>
+                <p class="needknow-section-content">
+                  Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities. Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the
+                  university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take
+                  full advantage of the university's facilities.Students should take full advantage of the university's facilities.
+                </p>
+                <mu-button color="primary" class="btn-needknow">Quick Link</mu-button>
+              </div>
+              <div class="needknow-section">
+                <h1 class="needknow-section-title">· Enroll Courses</h1>
+                <p class="needknow-section-content">
+                  Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities. Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the
+                  university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take
+                  full advantage of the university's facilities.Students should take full advantage of the university's facilities.
+                </p>
+                <mu-button color="primary" class="btn-needknow">Quick Link</mu-button>
+              </div>
+              <div class="needknow-section">
+                <h1 class="needknow-section-title">· Enroll Courses</h1>
+                <p class="needknow-section-content">
+                  Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities. Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the
+                  university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take
+                  full advantage of the university's facilities.Students should take full advantage of the university's facilities.
+                </p>
+                <mu-button color="primary" class="btn-needknow">Quick Link</mu-button>
+              </div>
+            </div>
+            <div class="facility-pane" v-if="domesticActive === 'facility'">
+              <v-echarts class="chart" :option="options"></v-echarts>
+              <div class="facility-section">
+                <h1 class="facility-title">Business and Law</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations
+                  are subject to international safeguards.
+                </p>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Education and Arts</h1>
+                <div class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                  <div class="facility-section-subcontent">
+                    <ol class="facility-order">
+                      <a href="#"><li>HelloWorld1</li></a>
+                      <a href="#"><li>HelloWorld2</li></a>
+                      <a href="#"><li>HelloWorld3</li></a>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Science</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                </p>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Health and medicine</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                </p>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Engineering and Built Environment</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                </p>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Pathways and Academic Learning Support Centre</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                </p>
+              </div>
+            </div>
+            <div class="service-pane" v-if="domesticActive === 'service'">
+              <div class="service-section">
+                <h1 class="service-section-title">Online Service:</h1>
+                <div class="service-panel">
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="service-section">
+                <h1 class="service-section-title">Offline Service:</h1>
+                <p class="service-section-content">
+                  Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities. Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the
+                  university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take
+                  full advantage of the university's facilities.Students should take full advantage of the university's facilities.
+                </p>
+                <mu-button color="primary" class="btn-needknow">Quick Link</mu-button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inter-container" v-if="tab == 1">
+          <div class="inter-nav">
+            <div class="inter-nav-header">Home</div>
+            <div class="inter-nav-item" :class="{ 'nav-item-active': interActive ==='home' }" @click="handleInterStep('home')">International Students</div>
+            <div class="inter-nav-item" :class="{ 'nav-item-active': interActive ==='todo' }" @click="handleInterStep('todo')">1 Before Uni To-Do List</div>
+            <div class="inter-nav-item" :class="{ 'nav-item-active': interActive ==='needknow' }" @click="handleInterStep('needknow')">2 By Week1 U need know</div>
+            <div class="inter-nav-item" :class="{ 'nav-item-active': interActive ==='introduction' }" @click="handleInterStep('introduction')">3 Semester Introduction</div>
+            <div class="inter-nav-item" :class="{ 'nav-item-active': interActive ==='facility' }" @click="handleInterStep('facility')">4 School and facility</div>
+            <div class="inter-nav-item" :class="{ 'nav-item-active': interActive ==='service' }" @click="handleInterStep('service')">5 Service from Uni</div>
+            <div class="inter-nav-item">FAQs</div>
+          </div>
+          <div class="inter-main">
+            <div class="overseas-student-panel" v-if="interActive === 'home'">
+              <h1 class="overseas-student-title">Welcome to Newcastle</h1>
+              <div class="video-wrapper">
+                <video src="./vedios/movie.ogv" width="100%" height="400px" controls="controls">your browser does not support the video tag</video>
+              </div>
+              <h1 class="overseas-student-title">Before your leave</h1>
+              <div class="overseas-student-desc-section">
+                Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese tea serving and drinking culture of "sado". Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese tea serving and drinking culture of "sado". Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese
+                tea serving and drinking culture of "sado".
+              </div>
+              <div class="overseas-student-gallery">
+                <div class="img-gallery-item">
+                  <div class="gallery-img">
+                    <img src="./images/gallery-img.jpeg" alt="gallery img" />
+                  </div>
+                  <div class="gallery-footer">
+                    <h1 class="gallery-footer-title">Student Visa</h1>
+                    <span class="gallery-footer-desc"> Learn More</span>
+                  </div>
+                </div>
+                <div class="img-gallery-item">
+                  <div class="gallery-img">
+                    <img src="./images/gallery-img.jpeg" alt="gallery img" />
+                  </div>
+                  <div class="gallery-footer">
+                    <h1 class="gallery-footer-title">Student Visa</h1>
+                    <span class="gallery-footer-desc"> Learn More</span>
+                  </div>
+                </div>
+                <div class="img-gallery-item">
+                  <div class="gallery-img">
+                    <img src="./images/gallery-img.jpeg" alt="gallery img" />
+                  </div>
+                  <div class="gallery-footer">
+                    <h1 class="gallery-footer-title">Student Visa</h1>
+                    <span class="gallery-footer-desc"> Learn More</span>
+                  </div>
+                </div>
+                <div class="img-gallery-item">
+                  <div class="gallery-img">
+                    <img src="./images/gallery-img.jpeg" alt="gallery img" />
+                  </div>
+                  <div class="gallery-footer">
+                    <h1 class="gallery-footer-title">Student Visa</h1>
+                    <span class="gallery-footer-desc"> Learn More</span>
+                  </div>
+                </div>
+                <div class="img-gallery-item">
+                  <div class="gallery-img">
+                    <img src="./images/gallery-img.jpeg" alt="gallery img" />
+                  </div>
+                  <div class="gallery-footer">
+                    <h1 class="gallery-footer-title">Student Visa</h1>
+                    <span class="gallery-footer-desc"> Learn More</span>
+                  </div>
+                </div>
+                <div class="img-gallery-item">
+                  <div class="gallery-img">
+                    <img src="./images/gallery-img.jpeg" alt="gallery img" />
+                  </div>
+                  <div class="gallery-footer">
+                    <h1 class="gallery-footer-title">Student Visa</h1>
+                    <span class="gallery-footer-desc"> Learn More</span>
+                  </div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="overseas-student-desc-section">
+                Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese tea serving and drinking culture of "sado". Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese tea serving and drinking culture of "sado". Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese
+                tea serving and drinking culture of "sado".
+              </div>
+
+              <div class="overseas-student-desc-section">
+                Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese tea serving and drinking culture of "sado". Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese tea serving and drinking culture of "sado". Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese
+                tea serving and drinking culture of "sado".
+              </div>
+
+              <div class="overseas-student-desc-section">
+                Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese tea serving and drinking culture of "sado". Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese tea serving and drinking culture of "sado". Japanese students set up a "sakura club" in 2008, which teaches judo and the knowledge of Japanese
+                tea serving and drinking culture of "sado".
+              </div>
+              <mu-button class="btn-overseas" full-width color="primary">中国 </mu-button>
+            </div>
+            <div class="todo-list-pane" v-if="interActive === 'todo'">
+              <h1 class="todo-title">To Do List:</h1>
+              <div class="intro-group">
+                <div class="intro-item"><mu-checkbox v-model="checkbox[0]" class="intro-item-checkbox"></mu-checkbox>1. Introduction of UON</div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[1]" class="intro-item-checkbox"></mu-checkbox> 2. Find <a href="#">degreee</a> information</div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[2]" class="intro-item-checkbox"></mu-checkbox>3. Watch <a href="#">"How to enroll in a course"</a> <img class="intro-icon" src="./images/vedio.png" alt="vedio" /></div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[3]" class="intro-item-checkbox"></mu-checkbox>4. Watch <a href="#">"How to select a course and manage timeable"</a><img class="intro-icon" src="./images/vedio.png" alt="vedio" /></div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[4]" class="intro-item-checkbox"></mu-checkbox>5. Watch <a href="#">"How to use blackboard"</a><img class="intro-icon" src="./images/vedio.png" alt="vedio" /></div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[5]" class="intro-item-checkbox"></mu-checkbox>6. <a href="#">Scholarships</a> Introduction</div>
+                <div class="intro-item"><mu-checkbox v-model="checkbox[6]" class="intro-item-checkbox"></mu-checkbox>7. <a href="#">Accommodation</a> Introduction</div>
+              </div>
+              <mu-button class="btn-intro" color="primary">Next</mu-button>
+            </div>
+            <div class="needknow-pane" v-if="interActive === 'needknow'">
+              <div class="needknow-section">
+                <h1 class="needknow-section-title">· Enroll Courses</h1>
+                <p class="needknow-section-content">
+                  Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities. Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the
+                  university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take
+                  full advantage of the university's facilities.Students should take full advantage of the university's facilities.
+                </p>
+                <mu-button color="primary" class="btn-needknow">Quick Link</mu-button>
+              </div>
+              <div class="needknow-section">
+                <h1 class="needknow-section-title">· Enroll Courses</h1>
+                <p class="needknow-section-content">
+                  Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities. Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the
+                  university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take
+                  full advantage of the university's facilities.Students should take full advantage of the university's facilities.
+                </p>
+                <mu-button color="primary" class="btn-needknow">Quick Link</mu-button>
+              </div>
+              <div class="needknow-section">
+                <h1 class="needknow-section-title">· Enroll Courses</h1>
+                <p class="needknow-section-content">
+                  Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities. Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the
+                  university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take
+                  full advantage of the university's facilities.Students should take full advantage of the university's facilities.
+                </p>
+                <mu-button color="primary" class="btn-needknow">Quick Link</mu-button>
+              </div>
+            </div>
+            <div class="facility-pane" v-if="interActive === 'facility'">
+              <v-echarts class="chart" :option="options"></v-echarts>
+              <div class="facility-section">
+                <h1 class="facility-title">Business and Law</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations
+                  are subject to international safeguards.
+                </p>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Education and Arts</h1>
+                <div class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                  <div class="facility-section-subcontent">
+                    <ol class="facility-order">
+                      <a href="#"><li>HelloWorld1</li></a>
+                      <a href="#"><li>HelloWorld2</li></a>
+                      <a href="#"><li>HelloWorld3</li></a>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Science</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                </p>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Health and medicine</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                </p>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Engineering and Built Environment</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                </p>
+              </div>
+              <div class="facility-section">
+                <h1 class="facility-title">Pathways and Academic Learning Support Centre</h1>
+                <p class="facility-section-content">
+                  All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to international safeguards.All nuclear installations are subject to
+                  international safeguards.
+                </p>
+              </div>
+            </div>
+            <div class="service-pane" v-if="interActive === 'service'">
+              <div class="service-section">
+                <h1 class="service-section-title">Online Service:</h1>
+                <div class="service-panel">
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                  <div class="service-part">XXXX</div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="service-section">
+                <h1 class="service-section-title">Offline Service:</h1>
+                <p class="service-section-content">
+                  Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities. Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the
+                  university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take full advantage of the university's facilities.Students should take
+                  full advantage of the university's facilities.Students should take full advantage of the university's facilities.
+                </p>
+                <mu-button color="primary" class="btn-needknow">Quick Link</mu-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer"></footer>
+    </div>
+    <script>
+      Vue.component("v-echarts", VueECharts);
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            tab: 0,
+            domesticActive: "todo",
+            interActive: "home",
+            checkbox: [0, 0, 0, 0, 0, 0, 0, 0],
+            options: {
+              tooltip: {
+                trigger: "item",
+              },
+              legend: {
+                bottom: "0",
+                left: "center",
+              },
+              series: [
+                {
+                  type: "pie",
+                  radius: ["60%", "80%"],
+                  avoidLabelOverlap: false,
+                  itemStyle: {
+                    borderRadius: 10,
+                    borderColor: "#fff",
+                    borderWidth: 1,
+                  },
+                  data: [
+                    { value: 1048, name: "Business and Law" },
+                    { value: 735, name: "Education and Arts" },
+                    { value: 580, name: "Science" },
+                    { value: 484, name: "Health and medicine" },
+                    { value: 300, name: "Engineering and Built Environment" },
+                    {
+                      value: 600,
+                      name: "Pathways and Academic Learning Support Centre",
+                    },
+                  ],
+                },
+              ],
+            },
+          };
+        },
+        methods: {
+          handleStep(tabName) {
+            this.domesticActive = tabName;
+          },
+          handleInterStep(tabName) {
+            this.interActive = tabName;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
