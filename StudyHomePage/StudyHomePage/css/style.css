@@ -1,0 +1,369 @@
+body {
+  background-color: #fedc33;
+}
+
+.clear {
+  clear: both;
+}
+
+.header {
+  width: 100%;
+  height: 300px;
+  background-color: #ccc;
+  display: flex;
+}
+
+.header .logo {
+  width: 300px;
+  height: 300px;
+  background-color: black;
+}
+.header .logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.header .banner {
+  color: white;
+  display: flex;
+  flex: 1;
+  font-size: 10em;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../images/newcastle.jpeg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.carousel {
+  height: 400px;
+  width: 100%;
+}
+
+.nav-container {
+  display: flex;
+}
+
+.nav-desc {
+  flex: 10;
+  margin-right: 20px;
+}
+
+.nav-bars {
+  flex: 4;
+}
+
+.brand {
+  width: 100%;
+  padding: 20px;
+  background-color: #eec938;
+  height: 685px;
+}
+
+.brand-title {
+  font-size: 34px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.brand-desc {
+  font-size: 24px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.notice {
+}
+
+.nav-guide {
+  background-color: #eec938;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.nav-guide .guide-header {
+  height: 85px;
+  font-size: 32px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+}
+
+.nav-guide .guide-item {
+  height: 70px;
+  font-size: 26px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.nav-guide .guide-item .icon {
+  margin-right: 15px;
+}
+
+.home-container,
+.inter-container {
+  display: flex;
+  padding: 20px;
+}
+
+.home-nav,
+.inter-nav {
+  flex: 4;
+  margin-right: 20px;
+}
+
+.home-nav-header,
+.inter-nav-header {
+  font-size: 32px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+}
+
+.home-nav-item,
+.inter-nav-item {
+  background-color: #f2f2f2;
+  height: 70px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.home-nav-item.nav-item-active,
+.inter-nav-item.nav-item-active {
+  background-color: #d7d7d7;
+}
+
+.home-main,
+.inter-main {
+  flex: 10;
+  background-color: #eec938;
+}
+
+.todo-list-pane {
+  padding: 20px 40px;
+}
+
+.todo-title {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 10px;
+}
+
+.intro-group {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.intro-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  height: 55px;
+}
+
+.intro-item-checkbox {
+  margin-right: 20px;
+}
+
+.intro-icon {
+  height: 50px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.btn-intro {
+  width: 180px;
+  height: 45px;
+  font-size: 24px;
+}
+
+.needknow-pane {
+  padding: 60px;
+}
+
+.needknow-section,
+.service-section {
+  margin-bottom: 40px;
+}
+
+.needknow-section-title,
+.service-section-title {
+  margin-bottom: 30px;
+  margin: 0px;
+  padding: 0px;
+  color: #2196f3;
+}
+
+.needknow-section-content,
+.service-section-content {
+  padding-left: 20px;
+  font-size: 20px;
+  line-height: 1.5em;
+}
+
+.btn-needknow {
+  float: right;
+}
+
+.facility-pane {
+  padding: 60px;
+}
+
+.facility-section {
+  margin-bottom: 20px;
+}
+
+.facility-section-content {
+  font-size: 24px;
+  padding-left: 40px;
+  line-height: 1.5em;
+}
+
+.facility-order {
+  margin: 0px;
+  padding: 10px;
+}
+
+.facility-section-subcontent {
+  padding-left: 60px;
+}
+
+.service-pane {
+  padding: 60px;
+}
+
+.service-panel {
+  margin-top: 40px;
+  width: 100%;
+  display: inline-block;
+}
+
+.service-part {
+  width: calc(20% - 16px);
+  margin-right: 20px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  float: left;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.service-part:nth-child(5n) {
+  margin-right: 0px;
+}
+
+.overseas-student-panel {
+  padding: 60px;
+}
+
+.video-wrapper {
+  background-color: black;
+  margin-bottom: 40px;
+}
+
+.overseas-student-title {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 30px;
+}
+
+.overseas-student-desc-section {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.overseas-student-gallery {
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+.img-gallery-item {
+  width: calc(33.333333% - 50px);
+  margin-right: 50px;
+  margin-bottom: 50px;
+  float: left;
+}
+
+.img-gallery-item:nth-child(3n) {
+  margin-right: 0px;
+}
+
+.gallery-img {
+  height: 280px;
+}
+
+.gallery-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-footer {
+  background-color: white;
+  min-height: 100px;
+  padding: 10px;
+  position: relative;
+}
+
+.gallery-footer::before {
+  position: absolute;
+  content: "";
+  left: 40px;
+  top: -40px;
+  border: 20px solid white;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.gallery-footer-title {
+  border-bottom: 4px solid #2196f3;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 20px;
+}
+
+.gallery-footer-desc {
+  display: block;
+  font-size: 24px;
+}
+
+.btn-overseas {
+  height: 55px;
+  font-size: 26px;
+}
+
+.btn-overseas .mu-button-wrapper {
+  justify-content: flex-start;
+}
+
+.chart {
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.footer {
+}
